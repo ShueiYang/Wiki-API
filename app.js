@@ -19,6 +19,11 @@ async function main() {
         })
         const Article = mongoose.model("Article", articlesSchema);
 
+
+        app.get('/', (req, res) => {
+            res.send("IT'S WORKING !!! :)")
+        })
+
         
         app.route("/articles")
        
@@ -126,8 +131,6 @@ async function main() {
         process.exit(1)
     }
 }
-
-
 
 
 let port = process.env.PORT;
