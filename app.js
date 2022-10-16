@@ -135,9 +135,9 @@ async function main() {
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-    port = 3000
+    port = 8080
 }
 
 app.listen(port, () => {
     console.log(`app is running on port ${port}`)
-}) 
+})
