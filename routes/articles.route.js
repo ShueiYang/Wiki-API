@@ -3,7 +3,7 @@ const express = require('express');
 const articlesRouter = express.Router();
 
 const { getArticles, createArticle, deleteAllArticles } = require('../controllers/articles.controller');
-const { searchArticle, updateArticle, patchArticle, deleteArticle } = require('../controllers/specificArticle.Controller');
+const { searchArticle, updateArticle, patchArticle, deleteArticle } = require('../controllers/specificArticle.controller');
 const { Article } = require('../model/article.model')
 
 articlesRouter.route("/")
