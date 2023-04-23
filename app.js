@@ -1,19 +1,28 @@
 require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 mongoose.set('strictQuery', false);
 
 const articlesRouter = require('./routes/articles.route');
+const formRoute = require("./routes/form")
 
 const app = express();
-
-app.use(express.urlencoded({ extended: true }))
-app.use('/articles', articlesRouter)
+app.use(cors());
+app.use(express.json());
 
 app.get('/', (req, res) => {
     res.send("IT'S WORKING !!! :)")
 })
+
+app.use("/articles", articlesRouter);
+app.use("/form", formRoute);
+
+
+app.all("*", (req, res) => {
+    res.status(404).json({ message: "This route does not exist" });
+});
 
 async function startServer() {
     
@@ -27,7 +36,7 @@ async function startServer() {
 }
 
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 
 startServer().then(() => {
     app.listen(PORT, () => {
